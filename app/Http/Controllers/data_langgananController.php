@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\stock;
+use App\data_langganan;
 use Illuminate\Support\Facades\DB;
 
-class stockController extends Controller
+class data_langgananController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,9 @@ class stockController extends Controller
      */
     public function index()
     {
-        //Tampil Data
-        // $stock = stock::orderBy('desc');
-        //$stock= DB::select('select * from stock');
-        $stock=stock::all();
-        return view('admin.dbarang')->with('stock',$stock);
+        $data_langganan=data_langganan::all();
+        return view('admin.dlangganan')->with('data_langganan',$data_langganan);
+  
     }
 
     /**
@@ -30,10 +28,7 @@ class stockController extends Controller
      */
     public function create()
     {
-        
-        return view(dbarang.create);
-        // \app\stock::create($request->all());
-        //  return redirect('/dbarang');
+        return view(dlangganan.create);
     }
 
     /**
@@ -45,19 +40,21 @@ class stockController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'Kode_Barang' => 'required',
-            'Nama_Barang' => 'required',
-            'Harga_Barang' => 'required',
-            'Satuan' => 'required'
+            'Kode_langganan' => 'required',
+            'Nama_langganan' => 'required',
+            'Alamat' => 'required',
+            'No_Tlp' => 'required',
+            'Wilayah' => 'required'
         ]);
 
-        stock::create([
-            'Kode_Barang' => $request -> Kode_Barang,
-            'Nama_Barang' =>$request -> Nama_Barang,
-            'Harga_Barang' =>  $request -> Harga_Barang,
-            'Satuan' =>  $request -> Satuan
+        data_langganan::create([
+            'Kode_langganan' => $request -> Kode_langganan,
+            'Nama_langganan' =>$request -> Nama_langganan,
+            'Alamat' =>  $request -> Alamat,
+            'No_Tlp' =>  $request -> No_Tlp,
+            'Wilayah' =>  $request -> Wilayah
         ]);
-        return redirect(route('dbarang.index'))->with('sucsess','Data Berhasil Ditambahkan') ;
+        return redirect(route('dlangganan.index'))->with('sucsess','Data Berhasil Ditambahkan') ;
     }
 
     /**

@@ -81,6 +81,12 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" href="{{url('/dlangganan')}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Data Pelanggan</span></a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="{{url('/dpenjualan')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Data Penjualan</span></a>

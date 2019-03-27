@@ -25,3 +25,8 @@ Route::get('/darea', 'AdminController@darea');
 Route::post('/dbarang','stockController@create');
 
 Route::resource('dbarang','stockController');
+
+Route::get('/dlangganan', 'data_langgananController@index');
+Route::post('/dlangganan','data_langgananController@create');
+
+Route::resource('dlangganan','data_langgananController');

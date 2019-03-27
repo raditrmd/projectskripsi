@@ -10,10 +10,10 @@ class stock extends Model
     protected $table='stock';
     
     //Primmary Key
-    public $PrimaryKey='cSTKpk';
+    public $PrimaryKey='Kode_Barang';
     
     //field create
-    protected $fillable =['cSTKpk','cSTKdesc','nSTKbuy'];
+    protected $fillable =['Kode_Barang','Nama_Barang','Harga_Barang','Satuan'];
 
     //Timestamp
     public $timestamps = true;

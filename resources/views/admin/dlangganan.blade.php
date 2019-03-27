@@ -14,7 +14,7 @@
 	            <div class="page-header row no-gutters py-4">
 	              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
 	                <!-- <span class="text-uppercase page-subtitle">Dashboard</span> -->
-	                <h3 class="page-title">Data Barang</h3>
+	                <h3 class="page-title">Data Pelanggan</h3>
 	              </div>
 	            </div>
     </section>
@@ -29,8 +29,8 @@
 
  <!-- Modal Tambah data Customer -->
 	            <!-- Button trigger -->
-        <a href="{{route ('dbarang.create')}}" class="btn btn-primary" data-toggle="modal" data-target="#CustomerModal">
-				  Tambah Barang
+        <a href="{{route ('dlangganan.create')}}" class="btn btn-primary" data-toggle="modal" data-target="#CustomerModal">
+				  Tambah Pelanggan
         </a>
 
 				<!-- Modal -->
@@ -45,51 +45,63 @@
               </div>
               
               
-              <form method="POST" action="{{route ('dbarang.store')}}">
+              <form method="POST" action="{{route ('dlangganan.store')}}">
               @csrf
 				      <div class="modal-body">				      
 			      		<div class="row">
     						<div class="col-sm-4 pt-2">
-    							<label>Kode Barang</label>
+    							<label>Kode Langganan</label>
     						</div>
     						<div class="col">
-        						<input type="text" name="Kode_Barang" class="form-control" placeholder="Kode Barang"  value="{{old('Kode Barang')}}" required>
-                    @if ($errors->has('Kode Barang'))
-                      <small class="form-text text-danger">{{$errors->first('Kode Barang')}} </small>
+        						<input type="number" name="Kode_langganan" class="form-control" placeholder="Kode Langganan"  value="{{old('Kode Langganan')}}" required>
+                    @if ($errors->has('Kode Langganan'))
+                      <small class="form-text text-danger">{{$errors->first('Kode Langganan')}} </small>
                     @endif
                 </div>
     					</div>
     					<div class="row pt-2">
     						<div class="col-sm-4 pt-2">
-    							<label>Nama Barang </label>
+    							<label>Nama Langganan </label>
     						</div>
     						<div class="col">
-                    <input type="text" name="Nama_Barang" class="form-control" placeholder="Nama Barang " value="{{old('Nama Barang')}}" required>
-                    @if ($errors->has('Nama Barang'))
-                      <small class="form-text text-danger">{{$errors->first('Nama Barang')}} </small>
+                    <input type="text" name="Nama_langganan" class="form-control" placeholder="Nama Langganan " value="{{old('Nama Langganan')}}" required>
+                    @if ($errors->has('Nama Langganan'))
+                      <small class="form-text text-danger">{{$errors->first('Nama Langganan')}} </small>
                     @endif
     						</div>
     					</div>
     					<div class="row pt-2">
     						<div class="col-sm-4 pt-2">
-    							<label>Harga Barang</label>
+    							<label>Alamat</label>
     						</div>
     						<div class="col">
-                    <input type="number" name="Harga_Barang" class="form-control" placeholder="Harga Barang"   value="{{old('Harga Barang')}}"required>
-                    @if ($errors->has('Harga Barang'))
-                      <small class="form-text text-danger">{{$errors->first('Harga Barang')}} </small>
+                    <input type="text" name="Alamat" class="form-control" placeholder="Alamat"   value="{{old('Alamat')}}"required>
+                    @if ($errors->has('Alamat'))
+                      <small class="form-text text-danger">{{$errors->first('Alamat')}} </small>
                     @endif
     						</div>
     					</div>
     					
               <div class="row pt-2">
     						<div class="col-sm-4 pt-2">
-    							<label>Satuan</label>
+    							<label>No Telepon</label>
     						</div>
     						<div class="col">
-                    <input type="text" name="Satuan" class="form-control" placeholder="Satuan"   value="{{old('Satuan')}}"required>
-                    @if ($errors->has('Satuan'))
-                      <small class="form-text text-danger">{{$errors->first('Satuan')}} </small>
+                    <input type="number" name="No_Tlp" class="form-control" placeholder="No Telepon"   value="{{old('No Telepon')}}"required>
+                    @if ($errors->has('No Telepon'))
+                      <small class="form-text text-danger">{{$errors->first('No Telepon')}} </small>
+                    @endif
+    						</div>
+    					</div>
+
+                        <div class="row pt-2">
+    						<div class="col-sm-4 pt-2">
+    							<label>Wilayah</label>
+    						</div>
+    						<div class="col">
+                    <input type="text" name="Wilayah" class="form-control" placeholder="Wilayah"   value="{{old('Wilayah')}}"required>
+                    @if ($errors->has('Wilayah'))
+                      <small class="form-text text-danger">{{$errors->first('Wilayah')}} </small>
                     @endif
     						</div>
     					</div>
@@ -104,32 +116,34 @@
 				</div>
         </div>
         </div>
-				<!-- End Modal Tambah Data Merk -->
+				<!-- End Modal Tambah Data Pelanggan -->
 
 
         <!-- Membuat Tabel -->
         <div class="card-body">
             <div class="table-responsive">
             <!-- Kondisi Hitung -->
-            @if(@count($stock)>0)  
+            @if(@count($data_langganan)>0)  
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Kode Barang</th>
-                    <th>Nama Barang</th>
-                    <th>Harga Barang</th>
-                    <th>Satuan</th>
+                    <th>Kode Langganan</th>
+                    <th>Nama Langganan</th>
+                    <th>Alamat</th>
+                    <th>No Telepon</th>
+                    <th>Wilayah</th>
                   </tr>
                 </thead>
 
 
                 <tbody>
-                @foreach($stock as $stock)
+                @foreach($data_langganan as $data_langganan)
                   <tr>
-                    <td>{{$stock->Kode_Barang}}</td>
-                    <td>{{$stock->Nama_Barang}}</td>
-                    <td>Rp.{{$stock->Harga_Barang}}</td>
-                    <td>{{$stock->Satuan}}</td>
+                    <td>{{$data_langganan->Kode_langganan}}</td>
+                    <td>{{$data_langganan->Nama_langganan}}</td>
+                    <td>{{$data_langganan->Alamat}}</td>
+                    <td>{{$data_langganan->No_Tlp}}</td>
+                    <td>{{$data_langganan->Wilayah}}</td>
 
                   </tr>
                   @endforeach
