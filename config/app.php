@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://arenahormonindonusa.xyz/crm'),
+    'url' => env('APP_URL', 'http://arenahormonindonusa.xyz/crm/'),
 
     'asset_url' => env('ASSET_URL', null),
 
