@@ -30,3 +30,18 @@ Route::get('/dlangganan', 'data_langgananController@index');
 Route::post('/dlangganan','data_langgananController@create');
 
 Route::resource('dlangganan','data_langgananController');
+
+
+/*Route::get('/testDatabase', function(){
+    App\User::create([
+            'email'   => uniqid() . '@gmail.com' ,
+            'name'  => 'Test User',
+            'password' => 'secret'
+    ]);
+  return response()->json(App\User::all());
+});
+
+Route::get('/testCache', function(){
+    Cache::put('someKey', 'foobar', 10);
+    return Cache::get('someKey');
+});*/
